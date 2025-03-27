@@ -5,6 +5,8 @@ const numbersList = document.getElementById('numbers-list')
 const answersForm = document.getElementById('answers-form')
 const form = document.getElementById('answers-form')
 const inputs = document.querySelectorAll('.form-control')
+const button = document.querySelector('button.btn')
+const messageText = document.getElementById('message')
 
 //Funzione per generare 5 numeri casuali
 function getRandInt(max, times){
@@ -55,12 +57,20 @@ setTimeout(() => {
 form.addEventListener('submit',function(e){
     e.preventDefault();
 
+    //Gestione del bottone
+    button.innerText = 'Gioca ancora'; 
+    button.classList.add('btn-success')
+    button.classList.remove('btn-primary')
+    button.onclick = function() {
+        window.location.reload();
+    };
     //Generare array delle risposte ricevute
     let risposte = []
     for(let i = 0; i<inputs.length;i++){
         risposte.push(inputs[i].value);
+        inputs[i].disabled = true; 
     }
     return risposte
-    // const risposte = Array.from({length: inputs.length}, (_,i) => inputs[i].value)
-    // console.log(risposte);
 })
+
+console.log(button);
