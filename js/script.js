@@ -21,21 +21,28 @@ function getRandInt(max, times){
 
 //Generazione numeri casuali
 const gameRandoms = getRandInt(100,5)
-
+console.log(gameRandoms);
 
 //Start Game: countdown 
 
 //Definizione della variabile i per mostrare secondi
 let i = 0;
 countdown.innerText = i; 
-
+numbersList.innerText = gameRandoms.join(' ')
+//Avvio countdown
 const interval = setInterval(() => {
     i++;
     countdown.innerText = i;
 }, 1000);
 
+//Tempo scaduto
 setTimeout(() => {
+    //Interrompo countdown
     clearInterval(interval)
+
+    //Nascondo elementi del pre-game
     countdown.classList.add('d-none')
     instructions.classList.add('d-none')
+    numbersList.classList.add('d-none')
+    
 }, 4000);
