@@ -30,8 +30,31 @@ function checkRisposte(risposteRicevute, risposteEsatte){
             risposteOk.push(risposteRicevute[i])
         }
     }
+
+    if(risposteOk.length ===1){
+        messageText.innerText = `Hai indovinato ${risposteOk.length} numero. 
+        Devi migliorare!
+        I numeri mostrati erano ${risposteEsatte.join(' ')}. 
+        Tu hai indicato ${risposteRicevute.join(' ')}, indovindando solo ${risposteOk.join(' ')}`
+    }else if (risposteOk.length <=4){
+        messageText.classList.add('text-warning')
+        messageText.classList.remove('text-danger')
+        messageText.innerText = `Bravo! Hai indovinato ${risposteOk.length} numeri.
+        Gioca ancora!
+        I numeri mostrati erano ${risposteEsatte.join(' ')}.
+        Tu hai indicato ${risposteRicevute.join(' ')}, indovindando ${risposteOk.join(' ')}`
+    }else if (risposteOk.length ===5 ){
+        messageText.classList.add('text-success')
+        messageText.classList.remove('text-danger')
+        messageText.innerText = `Ottimo!
+        Hai indovinato tutti i ${risposteOk.length} numeri.
+        I numeri mostrati erano ${risposteEsatte.join(' ')}. 
+        Tu hai indicato ${risposteRicevute.join(' ')}, indovindando ${risposteOk.join(' ')}`
+    }
+
     return risposteOk
 }
+
 
 //Generazione numeri casuali
 const gameRandoms = getRandInt(50,5)
