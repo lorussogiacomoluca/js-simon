@@ -3,7 +3,8 @@ const countdown = document.getElementById('countdown')
 const instructions = document.getElementById('instructions')
 const numbersList = document.getElementById('numbers-list')
 const answersForm = document.getElementById('answers-form')
-
+const form = document.getElementById('answers-form')
+const inputs = document.querySelectorAll('.form-control')
 
 //Funzione per generare 5 numeri casuali
 function getRandInt(max, times){
@@ -44,5 +45,22 @@ setTimeout(() => {
     countdown.classList.add('d-none')
     instructions.classList.add('d-none')
     numbersList.classList.add('d-none')
+
+    //Mostro input fields
     answersForm.classList.remove('d-none')
 }, 4000);
+
+
+//Ricevo i dati inseriti dall'utente
+form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    //Generare array delle risposte ricevute
+    let risposte = []
+    for(let i = 0; i<inputs.length;i++){
+        risposte.push(inputs[i].value);
+    }
+    return risposte
+    // const risposte = Array.from({length: inputs.length}, (_,i) => inputs[i].value)
+    // console.log(risposte);
+})
