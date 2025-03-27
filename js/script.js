@@ -22,9 +22,19 @@ function getRandInt(max, times){
     return randoms;
 }
 
+//Funzione per CheckRisposte
+function checkRisposte(risposteRicevute, risposteEsatte){
+    let risposteOk = []
+    for(let i = 0; i<risposteRicevute.length; i++){
+        if(risposteEsatte.includes(risposteRicevute[i])){
+            risposteOk.push(risposteRicevute[i])
+        }
+    }
+    return risposteOk
+}
+
 //Generazione numeri casuali
 const gameRandoms = getRandInt(50,5)
-console.log(gameRandoms);
 
 //Start Game: countdown 
 
@@ -64,13 +74,14 @@ form.addEventListener('submit',function(e){
     button.onclick = function() {
         window.location.reload();
     };
+
     //Generare array delle risposte ricevute
-    let risposte = []
+    let risposteRicevute = []
     for(let i = 0; i<inputs.length;i++){
-        risposte.push(inputs[i].value);
+        risposteRicevute.push(parseInt(inputs[i].value));
         inputs[i].disabled = true; 
     }
-    return risposte
+    console.log(risposteRicevute, gameRandoms);
+    const risultato = checkRisposte(risposteRicevute, gameRandoms);
+    console.log(risultato);
 })
-
-console.log(button);
