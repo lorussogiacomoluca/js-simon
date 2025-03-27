@@ -14,8 +14,8 @@ function getRandInt(max, times){
     const randoms = []
 
     //Ciclo FOR per salvare i numeri generati
-    for(let i=0; i<times; i++){
-        randoms.push(Math.floor(Math.random()*max)) 
+    for (let i = 0; i < times; i++) {
+        randoms.push(Math.floor(Math.random() * max) + 1); 
     }
 
     //Return ARRAY
@@ -101,8 +101,13 @@ form.addEventListener('submit',function(e){
     //Generare array delle risposte ricevute
     let risposteRicevute = []
     for(let i = 0; i<inputs.length;i++){
-        risposteRicevute.push(parseInt(inputs[i].value));
         inputs[i].disabled = true; 
+
+        //Gestione dei valori unici in array ricevuto
+        if(!risposteRicevute.includes(parseInt(inputs[i].value))){
+            risposteRicevute.push(parseInt(inputs[i].value));
+                
+        }
     }
     console.log(risposteRicevute, gameRandoms);
     const risultato = checkRisposte(risposteRicevute, gameRandoms);
