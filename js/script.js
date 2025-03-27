@@ -2,7 +2,7 @@
 const countdown = document.getElementById('countdown')
 const instructions = document.getElementById('instructions')
 const numbersList = document.getElementById('numbers-list')
-
+const answersForm = document.getElementById('answers-form')
 
 
 //Funzione per generare 5 numeri casuali
@@ -20,7 +20,7 @@ function getRandInt(max, times){
 }
 
 //Generazione numeri casuali
-const gameRandoms = getRandInt(100,5)
+const gameRandoms = getRandInt(50,5)
 console.log(gameRandoms);
 
 //Start Game: countdown 
@@ -44,5 +44,5 @@ setTimeout(() => {
     countdown.classList.add('d-none')
     instructions.classList.add('d-none')
     numbersList.classList.add('d-none')
-    
+    answersForm.classList.remove('d-none')
 }, 4000);
